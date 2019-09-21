@@ -1,0 +1,60 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "Boiler plate for react + relayjs",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maspinguin/react-relay-boiler-plate.git"
+  },
+  "keywords": [
+    "react",
+    "relayjs"
+  ],
+  "author": "Bangkit Ilham Maulana (Bangkit@wallextech.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maspinguin/react-relay-boiler-plate/issues"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=local webpack-dev-server --hot --port 4000"
+  },
+  "homepage": "https://github.com/maspinguin/react-relay-boiler-plate#readme",
+  "dependencies": {
+    "@babel/runtime": "7.5.0",
+    "graphql": "14.3.1",
+    "graphql-tag": "2.10.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-relay": "4.0.0",
+    "relay-runtime": "4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/node": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/plugin-proposal-export-default-from": "7.2.0",
+    "@babel/plugin-proposal-function-bind": "7.2.0",
+    "@babel/plugin-transform-flow-strip-types": "7.4.4",
+    "@babel/plugin-transform-runtime": "7.4.4",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "autoprefixer": "9.4.2",
+    "babel-loader": "8.0.5",
+    "babel-plugin-relay": "1.7.0",
+    "copy-webpack-plugin": "5.0.2",
+    "cross-env": "5.2.0",
+    "css-loader": "1.0.1",
+    "dotenv": "6.2.0",
+    "html-webpack-plugin": "3.2.0",
+    "mini-css-extract-plugin": "0.4.5",
+    "node-sass": "4.12.0",
+    "postcss-loader": "3.0.0",
+    "relay-compiler": "4.0.0",
+    "relay-devtools": "1.4.0",
+    "sass-loader": "7.1.0",
+    "webpack": "4.29.5",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.10"
+  }
+}
