@@ -57,6 +57,9 @@ class SenjaList extends React.Component{
             }
         );
     }
+    goToDetail(id) {
+        this.props.history.push('/senja/'+id);
+    }
     render() {
         let rows;
         let endCount = 0;
@@ -70,7 +73,7 @@ class SenjaList extends React.Component{
                             <td>{senjas.plainId}</td>
                             <td>{senjas.name}</td>
                             <td>
-                                <button>view</button>
+                                <button onClick={()=>this.goToDetail(senjas.plainId)}>view</button>
                             </td>
                         </tr>
                     );

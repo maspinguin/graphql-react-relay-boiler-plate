@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, createFragmentContainer } from 'react-relay';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Senja from './Senja/Senja';
+import ViewSenja from './Senja/ViewSenja/ViewSenja';
 
 class App extends React.Component {
     render() {
@@ -14,6 +15,12 @@ class App extends React.Component {
                         path={'/'}
                         title={'Senja'}
                         render={props => <Senja {...props} viewer={viewer}/>}
+                    />
+                    <Route
+                        exact
+                        path={'/senja/:id'}
+                        title={'Senja View'}
+                        render={props => <ViewSenja {...props} viewer={viewer}/>}
                     />
                 </Switch>
             </Router>
