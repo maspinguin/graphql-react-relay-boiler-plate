@@ -1,3 +1,7 @@
 .idea
 package-lock.json
 node_modules
+yarn.lock
+graphql.config.json
+graphql.schema.json
+__generated__
