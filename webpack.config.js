@@ -12,6 +12,11 @@ let publicPath = `/`;
 module.exports = [{
     mode: mode,
     devServer: {
+        disableHostCheck: true,
+        allowedHosts: [
+            'localhost'
+        ],
+        hot: true,
         historyApiFallback: true,
     },
     context: path.join(__dirname),

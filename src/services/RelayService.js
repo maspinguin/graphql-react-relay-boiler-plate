@@ -62,10 +62,10 @@ const fetchQuery = async (operation, variables, cacheConfig) => {
     return data;
 };
 
-if (process.env.REACT_APP_MODE == 'development') {
-    const { installRelayDevTools } = require('relay-devtools');
-    installRelayDevTools();
-}
+// if (process.env.REACT_APP_MODE == 'development') {
+//     const { installRelayDevTools } = require('relay-devtools');
+//     installRelayDevTools();
+// }
 
 const modernEnvironment = new Environment({
     network: Network.create(fetchQuery),

@@ -1,6 +1,7 @@
 import React from 'react';
 import { QueryRenderer } from 'react-relay';
 import RelayService from '../services/RelayService';
+import App from './App';
 
 class AppLoader extends React.Component {
     constructor() {
@@ -16,6 +17,7 @@ class AppLoader extends React.Component {
                         viewer {
                             id
                             plainId
+                            ...App_viewer
                         }
                     }
                 `}
@@ -25,7 +27,7 @@ class AppLoader extends React.Component {
                         return <div>error</div>
                     }
                     else if(props) {
-                        return <div> success page!</div>
+                        return <App viewer={props.viewer}/>
                     }
                    return 'loading...';
                 }}
