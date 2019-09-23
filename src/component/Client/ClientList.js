@@ -156,7 +156,7 @@ export default createPaginationContainer(
     {
         direction: 'forward',
         getConnectionFromProps(props) {
-            return props.viewer && props.viewer.Clients;
+            return props.viewer && props.viewer.clients;
         },
         // This is also the default implementation of `getFragmentVariables` if it isn't provided.
         getFragmentVariables(prevVars, totalCount) {
