@@ -18,7 +18,7 @@ class ClientListLoader extends React.Component{
                 query={query}
                 render={({ error, props }) => {
                     if(error) {
-                        console.log('error', error)
+                        // console.log('error', error)
                         return <div>error</div>
                     }
                     else if(props) {
@@ -27,7 +27,7 @@ class ClientListLoader extends React.Component{
                             viewer={props.viewer}
                         />
                     }
-                    return 'loading...';
+                    return <div>loading...</div>;
                 }}
             ></QueryRenderer>
         )

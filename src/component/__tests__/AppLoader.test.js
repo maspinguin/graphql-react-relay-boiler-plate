@@ -5,11 +5,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TestHelper from '../../helper/TestHelper';
 
 import AppLoader from '../AppLoader';
-
+import App from "../App";
 
 // Mock relayService.environment with createMockEnvironment;
 import RelayService from '../../services/RelayService';
-import App from "../App";
 jest.mock('../../services/RelayService');
 
 describe('AppLoader', () => {
@@ -25,6 +24,17 @@ describe('AppLoader', () => {
             <AppLoader/>
         );
 
+        const loading = wrapper.root
+            .findAllByType('div')
+            .find(TestHelper.findInChildren(node => node === 'loading...'));
+        expect(loading).not.toEqual(undefined);
+    });
+
+    it('should render error of App Loader', async () => {
+        const wrapper = create(
+            <AppLoader/>
+        );
+
         const newError = new Error('Network Error');
         environment.mock.rejectMostRecentOperation(newError);
 
@@ -32,5 +42,28 @@ describe('AppLoader', () => {
             .findAllByType('div')
             .find(TestHelper.findInChildren(node => node === 'error'));
         expect(queryError).not.toEqual(undefined);
-    });
+    })
+
+    it('should render success of App Loader', async () => {
+        const wrapper = create(
+            <AppLoader/>
+        );
+
+        environment.mock.resolveMostRecentOperation(operation =>
+            MockPayloadGenerator.generate(operation, {
+                String(context, generateId) {
+                    if(context.name === 'id') {
+                        return generateId;
+                    }
+                    if(context.name === 'plainId'){
+                        return '1';
+                    }
+                }
+            })
+        );
+
+        const AppWrapper = wrapper.root.findByType(App);
+        expect(AppWrapper).not.toEqual(undefined);
+
+    })
 });

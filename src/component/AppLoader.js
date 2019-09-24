@@ -23,13 +23,13 @@ class AppLoader extends React.Component {
                 `}
                 render={({ error, props }) => {
                     if(error) {
-                        console.log('error', error)
+                        // console.log('error', error)
                         return <div>error</div>
                     }
                     else if(props) {
                         return <App viewer={props.viewer}/>
                     }
-                   return 'loading...';
+                   return <div>loading...</div>;
                 }}
             ></QueryRenderer>
         )
