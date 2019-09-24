@@ -18,22 +18,41 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=local webpack-dev-server --hot --port 4000",
-    "build:relay": "relay-compiler --src ./src/ --schema ../graphql-relay-express-boiler-plate/src/graphql/schema.graphql"
+    "build:relay": "relay-compiler --src ./src/ --schema ../graphql-relay-express-boiler-plate/src/graphql/schema.graphql",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./config/jest-setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "automock": false,
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/"
+    ]
   },
   "homepage": "https://github.com/maspinguin/react-relay-boiler-plate#readme",
   "dependencies": {
     "@babel/runtime": "^7.5.0",
     "graphql": "14.3.1",
     "graphql-tag": "2.10.0",
+    "lodash": "latest",
+    "prop-types": "latest",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-relay": "4.0.0",
-    "react-router-dom": "^5.0.1",
-    "relay-runtime": "^4.0.0",
-    "universal-cookie": "^4.0.2",
     "react-router": "latest",
-    "lodash": "latest",
-    "prop-types": "latest"
+    "react-router-dom": "^5.0.1",
+    "react-test-renderer": "16.8.6",
+    "relay-runtime": "^4.0.0",
+    "relay-test-utils": "5.0.0",
+    "universal-cookie": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
@@ -53,6 +72,7 @@
     "css-loader": "1.0.1",
     "dotenv": "6.2.0",
     "html-webpack-plugin": "3.2.0",
+    "jest": "^24.9.0",
     "mini-css-extract-plugin": "0.4.5",
     "node-sass": "4.12.0",
     "postcss-loader": "3.0.0",
