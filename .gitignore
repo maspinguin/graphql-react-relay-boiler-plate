@@ -5,3 +5,4 @@ yarn.lock
 graphql.config.json
 graphql.schema.json
 __generated__
+coverage
