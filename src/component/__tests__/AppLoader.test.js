@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { create } from 'react-test-renderer';
 import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TestHelper from '../../helper/TestHelper';
 
 import AppLoader from '../AppLoader';
@@ -42,7 +41,7 @@ describe('AppLoader', () => {
             .findAllByType('div')
             .find(TestHelper.findInChildren(node => node === 'error'));
         expect(queryError).not.toEqual(undefined);
-    })
+    });
 
     it('should render success of App Loader', async () => {
         const wrapper = create(
@@ -65,5 +64,5 @@ describe('AppLoader', () => {
         const AppWrapper = wrapper.root.findByType(App);
         expect(AppWrapper).not.toEqual(undefined);
 
-    })
+    });
 });

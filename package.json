@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=local webpack-dev-server --hot --port 4000",
-    "build:relay": "relay-compiler --src ./src/ --schema ../graphql-relay-express-boiler-plate/src/graphql/schema.graphql",
+    "build:relay": "./node_modules/.bin/relay-compiler --src ./src/ --schema ../graphql-relay-express-boiler-plate/src/graphql/schema.graphql",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
@@ -50,7 +50,7 @@
     "react-router": "latest",
     "react-router-dom": "^5.0.1",
     "react-test-renderer": "16.8.6",
-    "relay-runtime": "^4.0.0",
+    "relay-runtime": "4.0.0",
     "relay-test-utils": "5.0.0",
     "universal-cookie": "^4.0.2"
   },
