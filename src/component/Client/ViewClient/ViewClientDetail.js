@@ -3,9 +3,17 @@ import { withRouter } from 'react-router';
 import { createRefetchContainer, graphql } from 'react-relay';
 import ConditionalRender from '../../ConditionalRender';
 import _ from 'lodash';
+import ClientUpdateSubscription from '../../../subscription/ClientUpdateSubscription';
 
+class ViewClientDetail extends React.Component{
+    componentDidMount()
+    {
+        let input = {
+            plainId: this.props.id
+        };
+        ClientUpdateSubscription(this.props.relay.environment,input);
+    }
 
-class ViewClientDetail extends React.Component {
     render() {
         const detailData = this.props.viewer.client;
         return (
@@ -16,6 +24,7 @@ class ViewClientDetail extends React.Component {
                         <div>plainId: {detailData.plainId} </div>
                         <div>name: {detailData.name} </div>
                         <div>email: {detailData.email} </div>
+                        <div>status: {detailData.status}</div>
                     </div>
                      :null }
                 </ConditionalRender>
@@ -38,7 +47,8 @@ export default createRefetchContainer(withRouter(ViewClientDetail), {
                     id,
                     plainId,
                     name,
-                    email
+                    email,
+                    status
                 }
             }
         `

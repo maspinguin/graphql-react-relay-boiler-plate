@@ -13,6 +13,8 @@ import Cookies from 'universal-cookie';
 const serverHost = process.env.REACT_APP_GRAPHQL_ENDPOINT;
 // console.log('serverHost', serverHost);
 
+import { SubscriptionClient } from 'subscriptions-transport-ws'
+
 const cache = new QueryResponseCache({ size: 100, ttl: 100000 });
 
 const fetchQuery = async (operation, variables, cacheConfig) => {
@@ -62,13 +64,49 @@ const fetchQuery = async (operation, variables, cacheConfig) => {
     return data;
 };
 
+const subscription = (config, variables, cacheConfig, observer) => {
+    const query = config.text;
+    const subscriptionClient = new SubscriptionClient(`${process.env.REACT_APP_GRAPHQL_SUBSCRIPTION}/graphql`, {reconnect: true});
+
+    const client = subscriptionClient
+        .request({ query, variables });
+
+    // UNUSED
+        // .subscribe({ query, variables }, {
+        //     next: result =>{
+        //         console.log('result', result);
+        //         console.log('observer', observer);
+        //         // observer.onNext({data:result.data})
+        //     },
+        // })
+    //     .subscribe({
+    //     next: result => {
+    //         observer.onNext({ data: result.data });
+    //     },
+    //     complete: () => {
+    //         observer.onCompleted(true);
+    //     },
+    //     error: error => {
+    //         observer.onError(error);
+    //     }
+    // });
+    //
+    // return {
+    //     dispose: client.unsubscribe
+    // };
+    // END OF UNUSED
+
+    return client;
+};
+
 // if (process.env.REACT_APP_MODE == 'development') {
 //     const { installRelayDevTools } = require('relay-devtools');
 //     installRelayDevTools();
 // }
 
 const modernEnvironment = new Environment({
-    network: Network.create(fetchQuery),
+    network: Network.create(fetchQuery,subscription),
+    // network: Network.create(fetchQuery),
     store: new Store(new RecordSource()),
 });
 

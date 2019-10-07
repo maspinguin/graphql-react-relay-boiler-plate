@@ -25,6 +25,7 @@ export default class ViewClientDetailLoader extends React.Component{
                     }
                     else if(props) {
                         return <ViewClientDetail
+                            id={id}
                             viewer={props.viewer}
                         />
                     }
