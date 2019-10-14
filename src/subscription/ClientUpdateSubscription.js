@@ -43,7 +43,7 @@ function ClientUpdateSubscription(enviroment, input) {
 
             // Root Store
             let root = store.getRoot();
-            root = root.getLinkedRecord('viewer').getLinkedRecord('client', {id: '2'});
+            root = root.getLinkedRecord('viewer').getLinkedRecord('client', {id: input.plainId});
             root.setValue(status, 'status');
             root.setValue(email, 'email');
             root.setValue(name, 'name');
